@@ -1,5 +1,4 @@
 import os
-
 from datetime import datetime, timedelta, timezone
 import dotenv
 dotenv.load_dotenv()
@@ -52,8 +51,8 @@ def run():
 
 
 print("Starting the job...")
-ticktick_api = TickTickAPI()
-sport_api = SportAPI()
+ticktick_api = TickTickAPI(token=os.environ.get("TICKTICK_API_TOKEN", ""))
+sport_api = SportAPI(token=os.environ.get("X_RAPIDAPI_KEY", ""))
 MY_TEAMS_IDS = str(os.environ.get("MY_TEAMS_IDS")).split(',')
 NEXT_WEEKS_NUMBER = int(os.environ.get("NEXT_WEEKS_NUMBER", 4))
 # Matches that are closer in time are less likely to be postponed, so defaulting 4
